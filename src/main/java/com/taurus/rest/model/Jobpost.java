@@ -1,10 +1,11 @@
 package com.taurus.rest.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -15,12 +16,25 @@ import java.util.List;
 @Entity
 
 public class Jobpost {
+
     @Id
     private int postId;
+
     private String postProfile;
     private String postDesc;
     private int reqExperience;
     private List<String> postTechStack;
+
+    public Jobpost() {
+    }
+
+    public Jobpost(int postId, List<String> postTechStack, int reqExperience, String postDesc, String postProfile) {
+        this.postId = postId;
+        this.postTechStack = postTechStack;
+        this.reqExperience = reqExperience;
+        this.postDesc = postDesc;
+        this.postProfile = postProfile;
+    }
 
     public int getPostId() {
         return postId;
@@ -61,5 +75,7 @@ public class Jobpost {
     public void setPostTechStack(List<String> postTechStack) {
         this.postTechStack = postTechStack;
     }
+
+
 }
 
